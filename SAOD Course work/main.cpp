@@ -1,5 +1,6 @@
 #include "headers/read.h"
 #include "headers/display.h"
+#include "headers/sort.h"
 
 int main(int *argc, char **argv) 
 {
@@ -16,6 +17,7 @@ int main(int *argc, char **argv)
 		is_open = Display_table(peoplelist, current_page);
 	}
 	
+
 
 	return 0;
 }

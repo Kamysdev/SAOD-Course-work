@@ -129,11 +129,13 @@
   <ItemGroup>
     <ClCompile Include="headers\display.cpp" />
     <ClCompile Include="headers\read.cpp" />
+    <ClCompile Include="headers\sort.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="headers\display.h" />
     <ClInclude Include="headers\read.h" />
+    <ClInclude Include="headers\sort.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
