@@ -11,15 +11,19 @@ int People::SetData(People templist)
     return 0;
 }
 
+
+
 int GetData(People* GetDataBack)
 {
     std::ifstream input("./testBase4.dat", std::ios::binary);
     People list{};
+
     for (int i = 0; !input.read((char*)&list, sizeof(People)).eof(); i++)
     {
-
         GetDataBack[i].SetData(list);
     }
+
+    input.close();
 
     return 0;
 }

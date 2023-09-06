@@ -12,9 +12,8 @@ int display_delimiter()
 	return 0;
 }
 
-int Display_table(People* peoplelist, int &current_page)
+int Display_table(People* peoplelist, int &currentPage)
 {
-
     std::cout << "City" << "\t" 
         << "||" << "\t\tFull name\t\t" 
         << "||" << "\tStreet\t\t" 
@@ -22,7 +21,7 @@ int Display_table(People* peoplelist, int &current_page)
         << "||" << " Flat " 
         << "||    DOS   ||\n";
 
-	for (int i = current_page * 20; i < current_page * 20 + 20; i++)
+	for (int i = currentPage * 20; i < currentPage * 20 + 20; i++)
 	{
 		display_delimiter();
 		std::cout << i + 1 << "\t|| " << peoplelist[i].FSname << "\t|| "
@@ -40,11 +39,11 @@ int Display_table(People* peoplelist, int &current_page)
 
 	if (button == 77)
 	{
-		current_page++;
+		currentPage++;
 	}
 	if (button == 75)
 	{
-		current_page--;
+		currentPage--;
 	}
 	if (button == 27)
 	{
@@ -52,13 +51,13 @@ int Display_table(People* peoplelist, int &current_page)
 	}
 
 
-	if (current_page < 0)
+	if (currentPage < 0)
 	{
-		current_page = 199;
+		currentPage = 199;
 	}
-	else if (current_page > 199)
+	else if (currentPage > 199)
 	{
-		current_page = 0;
+		currentPage = 0;
 	}
 
 	system("CLS");

@@ -3,9 +3,8 @@
 #include <fstream>
 #include <cstring>
 
-class People
+struct People
 {
-public:
     char FSname[32];
     char Street[18];
     short int House_No;
