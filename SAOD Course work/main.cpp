@@ -1,5 +1,6 @@
 #include "headers/read.h"
 #include "headers/display.h"
+#include "headers/sort.h"
 
 int main(int *argc, char **argv) 
 {
@@ -7,13 +8,24 @@ int main(int *argc, char **argv)
 
 	int current_page = 0;
 	bool is_open = 1;
-	People* peoplelist = new People[4000];
+	int arrsize = 4000;
+
+	People* peoplelist = new People[arrsize];
+
+	int* index = new int[arrsize];
+	for (int i = 0; i < arrsize; i++)
+	{
+		index[i] = i;
+	}
+
 
 	GetData(peoplelist);	//Load DB
+	heapSort(peoplelist, index, arrsize);
+
 
 	while (is_open)
 	{
-		is_open = Display_table(peoplelist, current_page);
+		is_open = Display_table(peoplelist, index, current_page);
 	}
 
 	return 0;

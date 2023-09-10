@@ -12,7 +12,7 @@ int display_delimiter()
 	return 0;
 }
 
-int Display_table(People* peoplelist, int &currentPage)
+int Display_table(People* peoplelist, int* index, int &currentPage)
 {
     std::cout << "City" << "\t" 
         << "||" << "\t\tFull name\t\t" 
@@ -24,11 +24,11 @@ int Display_table(People* peoplelist, int &currentPage)
 	for (int i = currentPage * 20; i < currentPage * 20 + 20; i++)
 	{
 		display_delimiter();
-		std::cout << i + 1 << "\t|| " << peoplelist[i].FSname << "\t|| "
-			<< peoplelist[i].Street << "\t|| "
-			<< peoplelist[i].House_No << "\t|| "
-			<< peoplelist[i].Flat_No << "\t|| "
-			<< peoplelist[i].Date_of_settlement << "||" << std::endl;
+		std::cout << i + 1 << "\t|| " << peoplelist[index[i]].FSname << "\t|| "
+			<< peoplelist[index[i]].Street << "\t|| "
+			<< peoplelist[index[i]].House_No << "\t|| "
+			<< peoplelist[index[i]].Flat_No << "\t|| "
+			<< peoplelist[index[i]].Date_of_settlement << "||" << std::endl;
 	}
 
 	display_delimiter();
