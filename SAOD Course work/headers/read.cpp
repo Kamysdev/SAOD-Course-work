@@ -11,8 +11,6 @@ int People::SetData(People templist)
     return 0;
 }
 
-
-
 int GetData(People* GetDataBack)
 {
     std::ifstream input("./testBase4.dat", std::ios::binary);

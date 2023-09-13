@@ -22,10 +22,19 @@ int main(int *argc, char **argv)
 		programStatus = GetKeyCommand(current_page);
 		system("CLS");
 
-		if (programStatus == SORT_DATABASE)
+		switch (programStatus)
 		{
-			HeapSort(index, arrsize);
+		case SORT_DATABASE:
+			Sort(index, arrsize);
+			break;
+		case GET_DEFAULT:
+			GetIndexArr(index, peoplelist, arrsize);
+			break;
+		default:
+			break;
 		}
+
+
 	}
 
 	return 0;
