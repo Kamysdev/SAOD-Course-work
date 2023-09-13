@@ -1,31 +1,31 @@
 #include "headers/read.h"
 #include "headers/display.h"
 #include "headers/sort.h"
+#include <windows.h>
 
 int main(int *argc, char **argv) 
 {
-	system("color 1f");		//Set color of console
+	system("color 1f");										// Set color of console
 
 	int current_page = 0;
-	bool is_open = 1;
+	int programStatus = 1;
 	int arrsize = 4000;
-
 	People* peoplelist = new People[arrsize];
+	People** index = new People*[arrsize];
 
-	int* index = new int[arrsize];
-	for (int i = 0; i < arrsize; i++)
+	GetData(peoplelist);									// Load DB
+	GetIndexArr(index, peoplelist, arrsize);				// Get Index
+
+	while (programStatus != EXIT_PROGRAM)					// Main body of program
 	{
-		index[i] = i;
-	}
+		Display_table(peoplelist, index, current_page);
+		programStatus = GetKeyCommand(current_page);
+		system("CLS");
 
-
-	GetData(peoplelist);	//Load DB
-	heapSort(peoplelist, index, arrsize);
-
-
-	while (is_open)
-	{
-		is_open = Display_table(peoplelist, index, current_page);
+		if (programStatus == SORT_DATABASE)
+		{
+			HeapSort(index, arrsize);
+		}
 	}
 
 	return 0;

@@ -1,7 +1,7 @@
 #pragma once
 
 #include <iostream>
-#include <conio.h>
 #include "read.h"
+#include "Control.h"
 
-int Display_table(People* peoplelist, int* index, int &current_page);
+int Display_table(People* peoplelist, People** index, int &current_page);

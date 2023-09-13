@@ -128,12 +128,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="headers\Control.cpp" />
     <ClCompile Include="headers\display.cpp" />
     <ClCompile Include="headers\read.cpp" />
     <ClCompile Include="headers\sort.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="headers\Control.h" />
     <ClInclude Include="headers\display.h" />
     <ClInclude Include="headers\read.h" />
     <ClInclude Include="headers\sort.h" />

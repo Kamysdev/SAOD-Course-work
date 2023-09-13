@@ -1,5 +1,6 @@
 #pragma once
 #include "read.h"
 
+void GetIndexArr(People** index, People* list, int listsize);
 
-void heapSort(People* arr, int* index, int size);
+void HeapSort(People** index, int size);
