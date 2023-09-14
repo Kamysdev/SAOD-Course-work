@@ -1,7 +1,6 @@
 #include "headers/read.h"
 #include "headers/display.h"
 #include "headers/sort.h"
-#include <windows.h>
 
 int main(int *argc, char **argv) 
 {
@@ -33,8 +32,6 @@ int main(int *argc, char **argv)
 		default:
 			break;
 		}
-
-
 	}
 
 	return 0;

@@ -16,6 +16,8 @@ int GetKeyCommand(int &currentPage)
 		return EXIT_PROGRAM;
 	case 115:
 		return SORT_DATABASE;
+	case 97:
+		return GET_DEFAULT;
 	default:
 		break;
 	}

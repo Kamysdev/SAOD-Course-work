@@ -82,6 +82,46 @@ void HeapSort(People** index, int size, int phase)
     }
 }
 
+//----------------------------------------------------------------//
+
+void heapifyAdress(People** index, int size, int i)
+{
+    int largest = i;
+    int left = 2 * i + 1;
+    int right = 2 * i + 2;
+
+    if (left < size && strcmp(index[left]->Street, index[largest]->Street) > 0
+        && strcmp(index[left]->Date_of_settlement, index[largest]->Date_of_settlement) == 0)
+    {
+        largest = left;
+    }
+
+    if (right < size && strcmp(index[right]->Street, index[largest]->Street) > 0
+        && strcmp(index[right]->Date_of_settlement, index[largest]->Date_of_settlement) == 0)
+    {
+        largest = right;
+    }
+
+    if (largest != i)
+    {
+        std::swap(index[i], index[largest]);
+
+        heapifyAdress(index, size, largest);
+    }
+}
+
+void HeapSortAdress(People** index, int size)
+{
+    for (int i = size / 2 - 1; i >= 0; i--)
+        heapifyAdress(index, size, i);
+
+    for (int i = size - 1; i >= 0; i--)
+    {
+        std::swap(index[0], index[i]);
+        heapifyAdress(index, i, 0);
+    }
+}
+
 void GetIndexArr(People** index, People* list, int listsize)
 {
     for (int i = 0; i < listsize; i++)
@@ -95,4 +135,5 @@ void Sort(People** index, int size)
     HeapSort(index, size, 1);
     HeapSort(index, size, 2);
     HeapSort(index, size, 3);
+    HeapSortAdress(index, size);
 }
