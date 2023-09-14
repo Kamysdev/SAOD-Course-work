@@ -3,6 +3,8 @@
 #include <fstream>
 #include <cstring>
 
+
+
 struct People
 {
     char FSname[32];
@@ -14,6 +16,15 @@ struct People
     People() = default;
 
     int SetData(People templist);
+};
+
+class DateBd
+{
+public:
+    People* temp;
+    std::string date;
+
+    void GetStringFromChar(People* temp);
 };
 
 int GetData(People *GetDataBack);

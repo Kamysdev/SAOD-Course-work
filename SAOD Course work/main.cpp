@@ -6,7 +6,7 @@ int main(int *argc, char **argv)
 {
 	system("color 1f");										// Set color of console
 
-	int current_page = 0;
+	int currentPage = 0;
 	int programStatus = 1;
 	int arrsize = 4000;
 	People* peoplelist = new People[arrsize];
@@ -17,11 +17,11 @@ int main(int *argc, char **argv)
 
 	while (programStatus != EXIT_PROGRAM)					// Main body of program
 	{
-		Display_table(peoplelist, index, current_page);
-		programStatus = GetKeyCommand(current_page);
-		system("CLS");
+		Display_table(peoplelist, index, currentPage);
+		programStatus = GetKeyCommand(currentPage);
+		
 
-		switch (programStatus)
+		switch (programStatus)								// Switch 
 		{
 		case SORT_DATABASE:
 			Sort(index, arrsize);
@@ -29,9 +29,13 @@ int main(int *argc, char **argv)
 		case GET_DEFAULT:
 			GetIndexArr(index, peoplelist, arrsize);
 			break;
+		case FIND_POS:
+			currentPage = GetPageByPos(DisplayFind_border());
+			break;
 		default:
 			break;
 		}
+		system("CLS");
 	}
 
 	return 0;

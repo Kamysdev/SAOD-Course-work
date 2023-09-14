@@ -25,3 +25,11 @@ int GetData(People* GetDataBack)
 
     return 0;
 }
+
+void DateBd::GetStringFromChar(People* temp)
+{
+    for (int i = 0; i <= 7; i++)
+    {
+        this->date.push_back(temp->Date_of_settlement[i]);
+    }
+}

@@ -36,5 +36,25 @@ int Display_table(People* peoplelist, People** index, int &currentPage)
 	std::cout << "\t\t\t<- Previous \t\t Next ->\t\tESC: Exit"
 		<< "\n\tS: Sort database\tA: Get standart database\tF: find position in database";
 
+	std::cout << std::endl << "===================="
+		<< "========================================="
+		<< "=========================================";
+
     return 1;
+}
+
+int DisplayFind_border()
+{
+	int pos = -1;
+
+	std::cout << std::endl << "Enter position: ";
+
+	while (pos < 0 || pos > 3999)
+	{
+		std::cin >> pos;
+	}
+
+	system("CLS");
+
+	return pos - 1;
 }

@@ -5,3 +5,5 @@
 #include "Control.h"
 
 int Display_table(People* peoplelist, People** index, int &current_page);
+
+int DisplayFind_border();

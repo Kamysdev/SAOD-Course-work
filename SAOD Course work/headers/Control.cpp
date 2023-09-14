@@ -18,6 +18,8 @@ int GetKeyCommand(int &currentPage)
 		return SORT_DATABASE;
 	case 97:
 		return GET_DEFAULT;
+	case 102:
+		return FIND_POS;
 	default:
 		break;
 	}
@@ -32,4 +34,11 @@ int GetKeyCommand(int &currentPage)
 	}
 
     return RUN_PROGRAM;
+}
+
+int GetPageByPos(int pos)
+{
+	int page = (int)((pos) / 20);
+
+	return page;
 }
