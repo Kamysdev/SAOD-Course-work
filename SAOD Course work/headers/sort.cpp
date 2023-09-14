@@ -1,6 +1,6 @@
 #include "sort.h"
 
-std::string IsEqual(People* index)
+std::string GetStringData(People* index)
 {
     std::string data;
     data.push_back(index->Date_of_settlement[6]);
@@ -13,44 +13,7 @@ std::string IsEqual(People* index)
     return data;
 }
 
-void heapify(People** index, int size, int i)
-{
-    int largest = i;
-    int left = 2 * i + 1;
-    int right = 2 * i + 2;
-    
-    if (left < size && std::stoi(IsEqual(index[left])) > std::stoi(IsEqual(index[largest])))
-    {
-        largest = left;
-    }
-
-    if (right < size && std::stoi(IsEqual(index[right])) > std::stoi(IsEqual(index[largest])))
-    {
-        largest = right;
-    }
-
-    if (largest != i)
-    {
-        std::swap(index[i], index[largest]);
-        heapify(index, size, largest);
-    }
-}
-
-void HeapSort(People** index, int size)
-{
-    for (int i = size / 2 - 2; i >= 0; i--)
-        heapify(index, size, i);
-
-    for (int i = size - 1; i >= 0; i--)
-    {
-        std::swap(index[0], index[i]);
-        heapify(index, i, 0);
-    }
-}
-
-
-
-
+////----------------------------------------------------------------//
 
 void heapify1(People** index, int size, int i)
 {
@@ -58,17 +21,18 @@ void heapify1(People** index, int size, int i)
     int left = 2 * i + 1;
     int right = 2 * i + 2;
 
-    if (left < size && (std::stoi(IsEqual(index[left])) > std::stoi(IsEqual(index[largest])) || (std::stoi(IsEqual(index[left])) == std::stoi(IsEqual(index[largest]))
-    //if (left < size && (std::stoi(IsEqual(index[left])) > std::stoi(IsEqual(index[largest])))
-    //    || (std::stoi(IsEqual(index[left])) == std::stoi(IsEqual(index[largest])))
-    //    && strcmp(index[left]->Street, index[largest]->Street) < 0)
-    //{
-    //    largest = left;
-    //}
+    if (left < size 
+        && (std::stoi(GetStringData(index[left])) > std::stoi(GetStringData(index[largest])) 
+        || (std::stoi(GetStringData(index[left])) == std::stoi(GetStringData(index[largest])) 
+        && strcmp(index[left]->Street, index[largest]->Street) > 0)))
+    {
+        largest = left;
+    }
 
-    if (right < size && std::stoi(IsEqual(index[right])) > std::stoi(IsEqual(index[largest]))
-        || (std::stoi(IsEqual(index[right])) == std::stoi(IsEqual(index[largest])))
-        && strcmp(index[right]->Street, index[largest]->Street) < 0)
+    if (right < size 
+        && (std::stoi(GetStringData(index[right])) > std::stoi(GetStringData(index[largest])) 
+        || (std::stoi(GetStringData(index[right])) == std::stoi(GetStringData(index[largest]))
+        && strcmp(index[right]->Street, index[largest]->Street) > 0)))
     {
         largest = right;
     }
@@ -80,15 +44,15 @@ void heapify1(People** index, int size, int i)
     }
 }
 
-void HeapSort1(People** index, int size, int min)
+void HeapSort1(People** index, int size)
 {
-    for (int i = size / 2 - 2; i >= min; i--)
-        heapify1(index, size, min);
+    for (int i = size / 2 - 1; i >= 0; i--)
+        heapify1(index, size, i);
 
-    for (int i = size - 1; i >= min; i--)
+    for (int i = size - 1; i >= 0; i--)
     {
         std::swap(index[0], index[i]);
-        heapify1(index, min, 0);
+        heapify1(index, i, 0);
     }
 }
 
@@ -104,7 +68,5 @@ void GetIndexArr(People** index, People* list, int listsize)
 
 void Sort(People** index, int size)
 {
-    HeapSort(index, size);
-
-
+    HeapSort1(index, size);
 }

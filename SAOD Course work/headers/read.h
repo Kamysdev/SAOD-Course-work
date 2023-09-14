@@ -18,13 +18,4 @@ struct People
     int SetData(People templist);
 };
 
-class DateBd
-{
-public:
-    People* temp;
-    std::string date;
-
-    void GetStringFromChar(People* temp);
-};
-
 int GetData(People *GetDataBack);
