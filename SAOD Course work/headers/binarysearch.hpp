@@ -26,6 +26,4 @@ struct MyQueue
     int size() const;
 };
 
-std::string GetDate(People** indexArr, int pos);
-
 MyQueue BinarySearch(People** indexArr, const std::string& targetKey);

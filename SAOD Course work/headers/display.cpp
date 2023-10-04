@@ -95,3 +95,33 @@ void printQueue(const MyQueue& result, int currentPage)
     }
 	displayControl(1);
 }
+
+
+int ShowBinarySearch(People** index, int programStatus, int& currentPage)
+{
+	std::string findYear{};
+	MyQueue result{};
+
+	std::cout << std::endl << "Enter year: ";
+	std::cin >> findYear;
+
+	result = BinarySearch(index, findYear);
+	if (result.empty())
+	{
+		system("cls");
+		std::cout << std::endl << "\t\t\t\t\t\tNo one record!";
+		Sleep(2000);
+		return 1;
+	}
+	else
+	{
+		while (programStatus == RUN_PROGRAM)
+		{
+			system("cls");
+			printQueue(result, currentPage);
+			programStatus = GetKeyCommand(currentPage);
+		}
+	}
+
+	return 0;
+}

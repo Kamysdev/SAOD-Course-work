@@ -1,6 +1,12 @@
 #pragma once
 #include <conio.h>
 
+#ifdef _WIN32
+#include <Windows.h>
+#else
+#include <unistd.h>
+#endif
+
 constexpr auto EXIT_PROGRAM = 0;
 constexpr auto RUN_PROGRAM = 1;
 constexpr auto SORT_DATABASE = 2;
