@@ -1,5 +1,6 @@
 #pragma once
 #include "read.hpp"
+#include "Control.hpp"
 
 struct node 
 {
