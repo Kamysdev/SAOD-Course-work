@@ -1,4 +1,4 @@
-#include "Control.h"
+#include "Control.hpp"
 
 int GetKeyCommand(int &currentPage)
 {
@@ -18,8 +18,10 @@ int GetKeyCommand(int &currentPage)
 		return SORT_DATABASE;
 	case 97:
 		return GET_DEFAULT;
-	case 102:
+	case 9:
 		return FIND_POS;
+	case 102:
+		return BINARY_SEARCH;
 	default:
 		break;
 	}

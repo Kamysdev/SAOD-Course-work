@@ -1,6 +1,6 @@
-#include "display.h"
+#include "display.hpp"
 
-int display_delimiter()
+void displayDelimiter()
 {
 	std::cout << "========"
 		<< "++" << "======================================"
@@ -8,21 +8,39 @@ int display_delimiter()
 		<< "++" << "======"
 		<< "++" << "======"
 		<< "++==========++\n";
-
-	return 0;
 }
 
-int Display_table(People* peoplelist, People** index, int &currentPage)
+void displayHead()
 {
-	display_delimiter();
-    std::cout << "City" << "\t" 
-        << "||" << "\t\tFull name\t\t" 
-        << "||" << "\tStreet\t\t" 
-        << "||" << " House" 
-        << "||" << " Flat " 
-        << "||    DOS   ||\n";
-	display_delimiter();
+	displayDelimiter();
+	std::cout << "City" << "\t"
+		<< "||" << "\t\tFull name\t\t"
+		<< "||" << "\tStreet\t\t"
+		<< "||" << " House"
+		<< "||" << " Flat "
+		<< "||    DOS   ||\n";
+	displayDelimiter();
+}
 
+void displayControl(int state)
+{
+	displayDelimiter();
+	std::cout << "\t\t\t<- Previous \t\t Next ->\t\tESC: Exit"
+		<< "\n\tS: Sort database\tA: Get standart database\tF: find position in database";
+
+	if (state == 1)
+	{
+		std::cout << std::endl << "\tB: back to index";
+	}
+
+	std::cout << std::endl << "===================="
+		<< "========================================="
+		<< "=========================================";
+}
+
+int displayTable(People* peoplelist, People** index, int &currentPage)
+{
+	displayHead();
 	for (int i = currentPage * 20; i < currentPage * 20 + 20; i++)
 	{
 		std::cout << i + 1 << "\t|| " << index[i]->FSname << "\t|| "
@@ -31,16 +49,9 @@ int Display_table(People* peoplelist, People** index, int &currentPage)
 			<< index[i]->Flat_No << "\t|| "
 			<< index[i]->Date_of_settlement << "||" << std::endl;
 	}
-	display_delimiter();
+	displayControl(0);
 
-	std::cout << "\t\t\t<- Previous \t\t Next ->\t\tESC: Exit"
-		<< "\n\tS: Sort database\tA: Get standart database\tF: find position in database";
-
-	std::cout << std::endl << "===================="
-		<< "========================================="
-		<< "=========================================";
-
-    return 1;
+    return 0;
 }
 
 int DisplayFind_border()
@@ -57,4 +68,30 @@ int DisplayFind_border()
 	system("CLS");
 
 	return pos - 1;
+}
+
+void printQueue(const MyQueue& result, int currentPage)
+{
+    node* currentNode = result.head;
+    int counter = 0;
+    int startIndex = currentPage * 20;
+
+    while (counter < startIndex && currentNode) {
+        currentNode = currentNode->next;
+        counter++;
+    }
+	displayHead();
+    while (currentNode && counter < startIndex + 20) {
+        People* recordPtr = currentNode->data;
+		
+        std::cout << counter + 1 << "\t|| " << recordPtr->FSname << "\t|| "
+            << recordPtr->Street << "\t|| "
+            << recordPtr->House_No << "\t|| "
+            << recordPtr->Flat_No << "\t|| "
+            << recordPtr->Date_of_settlement << "||" << std::endl;
+
+        currentNode = currentNode->next;
+        counter++;
+    }
+	displayControl(1);
 }

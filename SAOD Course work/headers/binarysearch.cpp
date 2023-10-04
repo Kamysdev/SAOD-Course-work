@@ -1,15 +1,12 @@
 #include "binarysearch.hpp"
 
-const char& GetDate(People** indexArr, int pos)
+std::string GetDate(People** indexArr, int pos)
 {
     std::string currentDate{};
     currentDate.push_back(indexArr[pos]->Date_of_settlement[6]);
     currentDate.push_back(indexArr[pos]->Date_of_settlement[7]);
 
-    char date[1]{};
-    strcpy(date, currentDate.c_str());
-
-    return *date;
+    return currentDate;
 }
 
 MyQueue BinarySearch(People** indexArr, const std::string& targetKey)
@@ -33,14 +30,14 @@ MyQueue BinarySearch(People** indexArr, const std::string& targetKey)
             result.push(indexArr[mid]);
 
             int leftIndex = mid - 1;
-            while (leftIndex >= 0 && strcmp(&GetDate(indexArr, leftIndex), targetKey.c_str()) == 0)
+            while (leftIndex >= 0 && strcmp(GetDate(indexArr, leftIndex).c_str(), targetKey.c_str()) == 0)
             {
                 result.push(indexArr[leftIndex]);
                 leftIndex--;
             }
 
             int rightIndex = mid + 1;
-            while (rightIndex < arrSize && strcmp(&GetDate(indexArr, rightIndex), targetKey.c_str()) == 0)
+            while (rightIndex < arrSize && strcmp(GetDate(indexArr, rightIndex).c_str(), targetKey.c_str()) == 0)
             {
                 result.push(indexArr[rightIndex]);
                 rightIndex++;

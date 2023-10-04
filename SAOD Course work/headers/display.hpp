@@ -3,7 +3,10 @@
 #include <iostream>
 #include "read.hpp"
 #include "Control.hpp"
+#include "binarysearch.hpp"
 
-int Display_table(People* peoplelist, People** index, int &current_page);
+int displayTable(People* peoplelist, People** index, int &current_page);
 
 int DisplayFind_border();
+
+void printQueue(const MyQueue& result, int currentPage);
