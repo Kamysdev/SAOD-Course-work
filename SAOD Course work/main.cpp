@@ -1,11 +1,12 @@
-#include "headers/read.h"
-#include "headers/display.h"
-#include "headers/sort.h"
+#include "headers/read.hpp"
+#include "headers/display.hpp"
+#include "headers/sort.hpp"
+
+// 141 variant
 
 int main(int *argc, char **argv) 
 {
 	system("color 1f");										// Set color of console
-
 	int currentPage = 0;
 	int programStatus = 1;
 	int arrsize = 4000;
@@ -19,7 +20,6 @@ int main(int *argc, char **argv)
 	{
 		Display_table(peoplelist, index, currentPage);
 		programStatus = GetKeyCommand(currentPage);
-		
 
 		switch (programStatus)								// Switch 
 		{

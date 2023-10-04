@@ -15,7 +15,7 @@ std::string GetStringData(People* index)
 
 ////----------------------------------------------------------------//
 
-void heapify1(People** index, int size, int i)
+void heapify(People** index, int size, int i)
 {
     int largest = i;
     int left = 2 * i + 1;
@@ -40,19 +40,19 @@ void heapify1(People** index, int size, int i)
     if (largest != i)
     {
         std::swap(index[i], index[largest]);
-        heapify1(index, size, largest);
+        heapify(index, size, largest);
     }
 }
 
-void HeapSort1(People** index, int size)
+void HeapSort(People** index, int size)
 {
     for (int i = size / 2 - 1; i >= 0; i--)
-        heapify1(index, size, i);
+        heapify(index, size, i);
 
     for (int i = size - 1; i >= 0; i--)
     {
         std::swap(index[0], index[i]);
-        heapify1(index, i, 0);
+        heapify(index, i, 0);
     }
 }
 
@@ -68,5 +68,5 @@ void GetIndexArr(People** index, People* list, int listsize)
 
 void Sort(People** index, int size)
 {
-    HeapSort1(index, size);
+    HeapSort(index, size);
 }

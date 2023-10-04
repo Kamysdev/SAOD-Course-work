@@ -135,13 +135,14 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="headers\Control.h" />
-    <ClInclude Include="headers\display.h" />
-    <ClInclude Include="headers\read.h" />
-    <ClInclude Include="headers\sort.h" />
+    <None Include="cpp.hint" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="cpp.hint" />
+    <ClInclude Include="headers\binarysearch.hpp" />
+    <ClInclude Include="headers\Control.hpp" />
+    <ClInclude Include="headers\display.hpp" />
+    <ClInclude Include="headers\read.hpp" />
+    <ClInclude Include="headers\sort.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

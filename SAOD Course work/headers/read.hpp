@@ -3,8 +3,6 @@
 #include <fstream>
 #include <cstring>
 
-
-
 struct People
 {
     char FSname[32];

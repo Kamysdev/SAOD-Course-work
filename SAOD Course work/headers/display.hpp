@@ -1,8 +1,8 @@
 #pragma once
 
 #include <iostream>
-#include "read.h"
-#include "Control.h"
+#include "read.hpp"
+#include "Control.hpp"
 
 int Display_table(People* peoplelist, People** index, int &current_page);
 
