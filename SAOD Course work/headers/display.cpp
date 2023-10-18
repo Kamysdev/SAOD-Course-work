@@ -96,7 +96,6 @@ void printQueue(const MyQueue& result, int currentPage)
 	displayControl(1);
 }
 
-
 int ShowBinarySearch(People** index, int programStatus, int& currentPage)
 {
 	std::string findYear{};
