@@ -26,6 +26,7 @@ MyQueue BinarySearch(People** indexArr, const std::string& targetKey)
         key.push_back(indexArr[mid]->Date_of_settlement[7]);
 
         if (key == targetKey 
+            && (indexArr[mid]->FSname[2] > indexArr[mid + 1]->FSname[2])
             && GetDate(indexArr, mid, 3, 4) == "01"
             && GetDate(indexArr, mid, 0, 1) == "01")
         {
