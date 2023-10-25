@@ -83,6 +83,24 @@ void InOrderTraversal(BTree* root, int& counter) {
     InOrderTraversal(root->right, counter);
 }
 
+void PrintFinderTree(BTree* root, int num) {
+    if (root == nullptr) {
+        return;
+    }
+
+    PrintFinderTree(root->left, num);
+    for (size_t i = 0; i < root->data.size(); i++) {
+        if (root->data[i].head->data->Flat_No == num) {
+            std::cout << root->data[i].head->data->FSname << "\t|| "
+                << root->data[i].head->data->Street << "\t|| "
+                << root->data[i].head->data->House_No << "\t|| "
+                << root->data[i].head->data->Flat_No << "\t|| "
+                << root->data[i].head->data->Date_of_settlement << "||" << std::endl;
+        }
+    }
+    PrintFinderTree(root->right, num);
+}
+
 BTree::BTree()
 {
     balance = 0;

@@ -11,6 +11,7 @@ int main(int *argc, char **argv)
 	int currentPage = 0;
 	int programStatus = 1;
 	int arrsize = 4000;
+	bool sorted = false;
 
 	People* peoplelist = new People[arrsize];
 	People** index = new People*[arrsize];
@@ -22,16 +23,18 @@ int main(int *argc, char **argv)
 
 	while (programStatus != EXIT_PROGRAM)					// Main body of program
 	{
-		displayTable(peoplelist, index, currentPage);
+		displayTable(peoplelist, index, currentPage, sorted);
 		programStatus = GetKeyCommand(currentPage);
 
 		switch (programStatus)								// Switch 
 		{
 		case SORT_DATABASE:
 			Sort(index, arrsize);
+			sorted = true;
 			break;
 		case GET_DEFAULT:
 			GetIndexArr(index, peoplelist, arrsize);
+			sorted = false;
 			break;
 		case FIND_POS:
 			currentPage = GetPageByPos(DisplayFind_border());

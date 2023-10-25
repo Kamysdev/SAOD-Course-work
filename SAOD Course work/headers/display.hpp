@@ -5,7 +5,7 @@
 #include "binarysearch.hpp"
 #include "btree.hpp"
 
-int displayTable(People* peoplelist, People** index, int &current_page);
+int displayTable(People* peoplelist, People** index, int &current_page, bool sorted);
 
 int DisplayFind_border();
 

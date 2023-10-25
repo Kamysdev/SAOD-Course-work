@@ -22,15 +22,21 @@ void displayHead()
 	displayDelimiter();
 }
 
-void displayControl(int state)
+void displayControl(int status)
 {
 	displayDelimiter();
-	std::cout << "\t\t\t<- Previous \t\t Next ->\t\tESC: Exit"
-		<< "\n\tS: Sort database\tA: Get standart database\tF: find position in database";
-
-	if (state == 1)
-	{
-		std::cout << std::endl << "\tB: back to index";
+	if (status == 0) {
+		std::cout << "\t\t\t<- Previous \t\t Next ->\t\tESC: Exit"
+			<< "\n\tS: Sort database";
+	}
+	if (status == 1) {
+		std::cout << "\t\t\t<- Previous \t\t Next ->\t\tESC: Exit"
+			<< "\n\tS: Sort database\tA: Get standart database\tF: find position in database";
+	}
+	if (status == 2) {
+		std::cout << "\t\t\t<- Previous \t\t Next ->\t\tESC: Exit"
+			<< "\n\tS: Sort database\tA: Get standart database\tF: find position in database"
+			<< "\n\tT: Build B-Tree";
 	}
 
 	std::cout << std::endl << "===================="
@@ -38,7 +44,7 @@ void displayControl(int state)
 		<< "=========================================";
 }
 
-int displayTable(People* peoplelist, People** index, int &currentPage)
+int displayTable(People* peoplelist, People** index, int &currentPage, bool sorted)
 {
 	displayHead();
 	for (int i = currentPage * 20; i < currentPage * 20 + 20; i++)
@@ -49,7 +55,13 @@ int displayTable(People* peoplelist, People** index, int &currentPage)
 			<< index[i]->Flat_No << "\t|| "
 			<< index[i]->Date_of_settlement << "||" << std::endl;
 	}
-	displayControl(0);
+
+	if (sorted) {
+		displayControl(1);
+	}
+	else {
+		displayControl(0);
+	}
 
     return 0;
 }
@@ -93,7 +105,7 @@ void printQueue(const MyQueue& result, int currentPage)
         currentNode = currentNode->next;
         counter++;
     }
-	displayControl(1);
+	displayControl(2);
 }
 
 MyQueue ShowBinarySearch(People** index, int programStatus, int& currentPage)
@@ -129,6 +141,7 @@ MyQueue ShowBinarySearch(People** index, int programStatus, int& currentPage)
 	if (programStatus == BTREE)
 	{
 		int counter = 0;
+		short int num = 0;
 		root = nullptr;
 		while (!(result.head == nullptr)) {
 			InsertInBTree(result, root, VR, HR);
@@ -138,7 +151,16 @@ MyQueue ShowBinarySearch(People** index, int programStatus, int& currentPage)
 		displayHead();
 		InOrderTraversal(root, counter);
 		displayDelimiter();
-		system("pause");
+		std::cout << "\n\t\tF: Find or press any key to exit...\n\n";
+		displayDelimiter();
+		int kkey = _getch();
+		if (kkey == 102) {
+			system("cls");
+			std::cout << "\t\t\tEnter number of flat:\n";
+			std::cin >> num;
+			PrintFinderTree(root, num);
+			system("pause");
+		}
 	}
 
 	return result;
