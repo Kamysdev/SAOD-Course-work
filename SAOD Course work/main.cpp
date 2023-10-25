@@ -1,6 +1,7 @@
 #include "headers/read.hpp"
 #include "headers/display.hpp"
 #include "headers/sort.hpp"
+#include "headers/btree.hpp"
 
 // 141 variant
 
@@ -13,6 +14,8 @@ int main(int *argc, char **argv)
 
 	People* peoplelist = new People[arrsize];
 	People** index = new People*[arrsize];
+
+	MyQueue result{};
 
 	GetData(peoplelist);									// Load DB
 	GetIndexArr(index, peoplelist, arrsize);				// Get Index
@@ -35,7 +38,7 @@ int main(int *argc, char **argv)
 			break;
 		case BINARY_SEARCH:
 			programStatus = RUN_PROGRAM;
-			ShowBinarySearch(index, programStatus, currentPage);
+			result = ShowBinarySearch(index, programStatus, currentPage);
 			break;
 		default:
 			break;

@@ -13,6 +13,7 @@ constexpr auto SORT_DATABASE = 2;
 constexpr auto GET_DEFAULT = 3;
 constexpr auto FIND_POS = 4;
 constexpr auto BINARY_SEARCH = 5;
+constexpr auto BTREE = 6;
 
 int GetKeyCommand(int &currentPage);
 

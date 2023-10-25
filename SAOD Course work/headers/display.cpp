@@ -13,7 +13,7 @@ void displayDelimiter()
 void displayHead()
 {
 	displayDelimiter();
-	std::cout << "City" << "\t"
+	std::cout << "Pos" << "\t"
 		<< "||" << "\t\tFull name\t\t"
 		<< "||" << "\tStreet\t\t"
 		<< "||" << " House"
@@ -96,10 +96,14 @@ void printQueue(const MyQueue& result, int currentPage)
 	displayControl(1);
 }
 
-int ShowBinarySearch(People** index, int programStatus, int& currentPage)
+MyQueue ShowBinarySearch(People** index, int programStatus, int& currentPage)
 {
 	std::string findYear{};
 	MyQueue result{};
+
+	BTree* root{};
+	bool VR = false;
+	bool HR = false;
 
 	std::cout << std::endl << "Enter year: ";
 	std::cin >> findYear;
@@ -110,7 +114,7 @@ int ShowBinarySearch(People** index, int programStatus, int& currentPage)
 		system("cls");
 		std::cout << std::endl << "\t\t\t\t\t\tNo one record!";
 		Sleep(2000);
-		return 1;
+		return MyQueue();
 	}
 	else
 	{
@@ -122,5 +126,20 @@ int ShowBinarySearch(People** index, int programStatus, int& currentPage)
 		}
 	}
 
-	return 0;
+	if (programStatus == BTREE)
+	{
+		int counter = 0;
+		root = nullptr;
+		while (!(result.head == nullptr)) {
+			InsertInBTree(result, root, VR, HR);
+			result.head = result.head->next;
+		}
+		system("cls");
+		displayHead();
+		InOrderTraversal(root, counter);
+		displayDelimiter();
+		system("pause");
+	}
+
+	return result;
 }

@@ -22,6 +22,8 @@ int GetKeyCommand(int &currentPage)
 		return FIND_POS;
 	case 102:
 		return BINARY_SEARCH;
+	case 116:
+		return BTREE;
 	default:
 		break;
 	}
