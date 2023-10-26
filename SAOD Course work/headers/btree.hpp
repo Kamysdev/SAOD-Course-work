@@ -16,4 +16,4 @@ void InsertInBTree(MyQueue& data, BTree*& root, bool& VR, bool& HR);
 
 void InOrderTraversal(BTree* root, int& counter);
 
-void PrintFinderTree(BTree* root, int num);
+void PrintFinderTree(BTree* root, int num, int num1, int& counter);

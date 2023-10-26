@@ -143,6 +143,7 @@ MyQueue ShowBinarySearch(People** index, int programStatus, int& currentPage)
 	{
 		int counter = 0;
 		short int num = 0;
+		short int num1 = 0;
 		root = nullptr;
 		while (!(result.head == nullptr)) {
 			InsertInBTree(result, root, VR, HR);
@@ -152,14 +153,18 @@ MyQueue ShowBinarySearch(People** index, int programStatus, int& currentPage)
 		displayHead();
 		InOrderTraversal(root, counter);
 		displayDelimiter();
-		std::cout << "\n\t\tF: Find or press any key to exit...\n\n";
+		std::cout << "\n\t\t\t\tF: Find or press any key to exit...\n\n";
 		displayDelimiter();
 		int kkey = _getch();
 		if (kkey == 102) {
+			counter = 0;
 			system("cls");
-			std::cout << "\t\t\tEnter number of flat:\n";
+			std::cout << "\t\t\tEnter number of house and flat:\n";
 			std::cin >> num;
-			PrintFinderTree(root, num);
+			std::cin >> num1;
+			displayHead();
+			PrintFinderTree(root, num, num1, counter);
+			displayDelimiter();
 			system("pause");
 		}
 	}

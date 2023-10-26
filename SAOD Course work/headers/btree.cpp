@@ -1,7 +1,6 @@
 #include "btree.hpp"
 
-void InsertInBTree(MyQueue& data, BTree*& root, bool& VR, bool& HR)
-{
+void InsertInBTree(MyQueue& data, BTree*& root, bool& VR, bool& HR) {
     if (root == nullptr) {
         root = new BTree;
         root->data.push_back(data);
@@ -12,7 +11,7 @@ void InsertInBTree(MyQueue& data, BTree*& root, bool& VR, bool& HR)
         HR = false;
     }
     else {
-        if (data.front()->Flat_No < root->data.front().head->data->Flat_No) {
+        if (data.front()->House_No < root->data.front().head->data->House_No) {
             InsertInBTree(data, root->left, VR, HR);
             if (VR) {
                 if (root->balance == 0) {
@@ -33,7 +32,7 @@ void InsertInBTree(MyQueue& data, BTree*& root, bool& VR, bool& HR)
                 HR = false;
             }
         }
-        else if (data.front()->Flat_No > root->data.front().head->data->Flat_No) {
+        else if (data.front()->House_No > root->data.front().head->data->House_No) {
             InsertInBTree(data, root->right, VR, HR);
             if (VR) {
                 root->balance = 1;
@@ -83,22 +82,24 @@ void InOrderTraversal(BTree* root, int& counter) {
     InOrderTraversal(root->right, counter);
 }
 
-void PrintFinderTree(BTree* root, int num) {
+void PrintFinderTree(BTree* root, int numhouse, int numflat, int& count) {
     if (root == nullptr) {
         return;
     }
 
-    PrintFinderTree(root->left, num);
+    PrintFinderTree(root->left, numhouse, numflat, count);
     for (size_t i = 0; i < root->data.size(); i++) {
-        if (root->data[i].head->data->Flat_No == num) {
-            std::cout << root->data[i].head->data->FSname << "\t|| "
+        if (root->data[i].head->data->House_No == numhouse
+        && root->data[i].head->data->Flat_No == numflat){
+            count++; 
+            std::cout << count << "\t|| " << root->data[i].head->data->FSname << "\t|| "
                 << root->data[i].head->data->Street << "\t|| "
                 << root->data[i].head->data->House_No << "\t|| "
                 << root->data[i].head->data->Flat_No << "\t|| "
                 << root->data[i].head->data->Date_of_settlement << "||" << std::endl;
         }
     }
-    PrintFinderTree(root->right, num);
+    PrintFinderTree(root->right, numhouse, numflat, count);
 }
 
 BTree::BTree()
