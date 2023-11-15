@@ -2,6 +2,7 @@
 #include "headers/display.hpp"
 #include "headers/sort.hpp"
 #include "headers/btree.hpp"
+#include "headers/code.hpp"
 
 // 141 variant
 
@@ -43,6 +44,8 @@ int main(int *argc, char **argv)
 			programStatus = RUN_PROGRAM;
 			result = ShowBinarySearch(index, programStatus, currentPage);
 			break;
+		case CODING:
+			coding();
 		default:
 			break;
 		}

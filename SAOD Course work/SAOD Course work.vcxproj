@@ -130,6 +130,7 @@
   <ItemGroup>
     <ClCompile Include="headers\binarysearch.cpp" />
     <ClCompile Include="headers\btree.cpp" />
+    <ClCompile Include="headers\code.cpp" />
     <ClCompile Include="headers\Control.cpp" />
     <ClCompile Include="headers\display.cpp" />
     <ClCompile Include="headers\read.cpp" />
@@ -142,6 +143,7 @@
   <ItemGroup>
     <ClInclude Include="headers\binarysearch.hpp" />
     <ClInclude Include="headers\btree.hpp" />
+    <ClInclude Include="headers\code.hpp" />
     <ClInclude Include="headers\Control.hpp" />
     <ClInclude Include="headers\display.hpp" />
     <ClInclude Include="headers\read.hpp" />

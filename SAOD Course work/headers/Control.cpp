@@ -1,4 +1,6 @@
+#pragma once
 #include "Control.hpp"
+#include <iostream>
 
 int GetKeyCommand(int &currentPage)
 {
@@ -18,12 +20,14 @@ int GetKeyCommand(int &currentPage)
 		return SORT_DATABASE;
 	case 97:
 		return GET_DEFAULT;
-	case 9:
+	case 112:
 		return FIND_POS;
 	case 102:
 		return BINARY_SEARCH;
 	case 116:
 		return BTREE;
+	case 99:
+		return CODING;
 	default:
 		break;
 	}

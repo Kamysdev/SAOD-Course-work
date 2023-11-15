@@ -27,15 +27,16 @@ void displayControl(int status)
 	displayDelimiter();
 	if (status == 0) {
 		std::cout << "\t\t\t<- Previous \t\t Next ->\t\tESC: Exit"
-			<< "\n\tS: Sort database";
+			<< "\n\tS: Sort database\t\tC: build code\t\tP: find position";
 	}
 	if (status == 1) {
 		std::cout << "\t\t\t<- Previous \t\t Next ->\t\tESC: Exit"
-			<< "\n\tS: Sort database\tA: Get standart database\tF: find position in database";
+			<< "\n\tS: Sort database\tA: Get standart database\tF: find position by year"
+			<< "\n\tP: find position";
 	}
 	if (status == 2) {
 		std::cout << "\t\t\t<- Previous \t\t Next ->\t\tESC: Exit"
-			<< "\n\tS: Sort database\tA: Get standart database\tF: find position in database"
+			<< "\n\tS: Sort database\tA: Get standart database\tF: find position by year"
 			<< "\n\tT: Build B-Tree";
 	}
 
