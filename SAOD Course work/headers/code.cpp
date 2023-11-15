@@ -59,7 +59,7 @@ std::unordered_map<char, int> get_char_counts_from_file(std::string file_name, i
     }
 
     char* ch_arr = new char[sizeof(People) * n] {};
-    //char ch_arr[sizeof(People) * n]{};
+
     file.read((char*)ch_arr, (std::streamsize)sizeof(People) * n);
     file.close();
 
